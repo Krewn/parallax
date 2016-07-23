@@ -10,10 +10,11 @@ div.navbar {
 }
 div.pageContent{
 	position: absolute;
-	top:0;
+	top: 0;
 	left: 0;
 	margin-top: 10vh;
 	margin-left: 2vw;
+	margin-right: 10vw;
 	z-index: 0;
 	background-color: #eee;
 	opacity: 0.7;
