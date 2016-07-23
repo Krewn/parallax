@@ -6,7 +6,7 @@
 		<link rel="stylesheet" href="https://maxcdn.bootstrapcdn.com/font-awesome/4.5.0/css/font-awesome.min.css">
 		<link href='https://fonts.googleapis.com/css?family=Arvo' rel='stylesheet' type='text/css'>
 	</head>
-	<body>
+	<body onresize="windowResize()">
 		<div id = "background">
 			<img src="https://krewn.github.io/ApophysisOutPuts/Inf/infPostInv2.jpg" alt="bkg">
 		</div>
@@ -75,11 +75,12 @@
 				//alert(windowHeight);    //<-The height of the window
 			}
 			function windowResize(){
+				bg.style.top = "0px";
 				windowHeight = wndsize()[1];
+				height = docHeight();
 				backgroundParallax();
 			}
 			window.onscroll = backgroundParallax;
-			window.onresize = windowResize;
 		</script>
 	</body>
 </html>

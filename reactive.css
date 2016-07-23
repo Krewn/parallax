@@ -27,6 +27,7 @@ div#background {
 	top:0;
 	left: 0;
 	z-index: -1;
+	transition: top  .1 ease;
 }
 font{
 	margin-top:0px;
