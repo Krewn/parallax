@@ -1,0 +1,85 @@
+<!DOCTYPE html>
+<html>
+	<head>
+		<meta name="viewport" content="width=device-width, initial-scale=1, maximum-scale=1">
+		<link rel="stylesheet" type="text/css" href="reactive.css">
+		<link rel="stylesheet" href="https://maxcdn.bootstrapcdn.com/font-awesome/4.5.0/css/font-awesome.min.css">
+		<link href='https://fonts.googleapis.com/css?family=Arvo' rel='stylesheet' type='text/css'>
+	</head>
+	<body>
+		<div id = "background">
+			<img src="https://krewn.github.io/ApophysisOutPuts/Inf/infPostInv2.jpg" alt="bkg">
+		</div>
+		<div class = "navbar">
+			<div class="list-group">
+				<a class="button" href = "https://krewn.github.io">Home</a>
+				<a href="https://github.com/krewn" class="icon-link"><i class="fa fa-github fa-2x"></i></a>
+				<a href="https://www.linkedin.com/in/kevin-nelson-0a499980" class="icon-link"><i class="fa fa-linkedin fa-2x"></i></a>
+				<a href="https://www.facebook.com/Kevinb867" class="icon-link"><i class="fa fa-facebook fa-2x"></i></a>
+				<a href="https://twitter.com/freelancephilos" class="icon-link"><i class="fa fa-twitter fa-2x"></i></a>
+				<a href="https://krewn.github.io/Reprogramming" class="icon-link"><i class="fa fa-asterisk fa-2x"></i></a>
+			</div>
+		</div>
+		<div class="pageContent">
+			<a>|!!Do not edit between pipes!!Article Here!!Do not edit between pipes!!|</a><br>
+		</div>
+		<script>
+			//start quote http://stackoverflow.com/questions/2481350/how-to-get-scrollbar-position-with-javascript
+			document.getScroll= function(){
+			 if(window.pageYOffset!= undefined){
+			  return [pageXOffset, pageYOffset];
+			 }
+			 else{
+			  let sx, sy, d= document, r= d.documentElement, b= d.body;
+			  sx= r.scrollLeft || b.scrollLeft || 0;
+			  sy= r.scrollTop || b.scrollTop || 0;
+			  return [sx, sy];
+			 }
+			}
+			//start quote http://stackoverflow.com/questions/1145850/how-to-get-height-of-entire-document-with-javascript
+			function docHeight(){
+				let body = document.body,
+				html = document.documentElement;
+				let height = Math.max( body.scrollHeight, body.offsetHeight, 
+				html.clientHeight, html.scrollHeight, html.offsetHeight );
+				return(height);
+			}
+			//start quote http://stackoverflow.com/questions/3437786/get-the-size-of-the-screen-current-web-page-and-browser-window
+			function wndsize(){
+			  let w = 0;var h = 0;
+			  //IE
+			  if(!window.innerWidth){
+			    if(!(document.documentElement.clientWidth == 0)){
+			      //strict mode
+			      w = document.documentElement.clientWidth;h = document.documentElement.clientHeight;
+			    } else{
+			      //quirks mode
+			      w = document.body.clientWidth;h = document.body.clientHeight;
+			    }
+			  } else {
+			    //w3c
+			    w = window.innerWidth;h = window.innerHeight;
+			  }
+			  return [w,h];
+			}
+			//end quote
+			let height = docHeight();
+			let windowHeight = wndsize()[1];			
+			let bg = document.getElementById('background');
+			function backgroundParallax(){
+				let pos = document.getScroll();
+				bg.style.top = String(parseInt((height-bg.clientHeight)*(pos[1]/(height-windowHeight)),10))+"px";
+				//alert(bg.clientHeight); //<-The height of the background
+				//alert(height);          //<-The height of the document
+				//alert(pos[1]);          //<-The height above the screen
+				//alert(windowHeight);    //<-The height of the window
+			}
+			function windowResize(){
+				windowHeight = wndsize()[1];
+				backgroundParallax();
+			}
+			window.onscroll = backgroundParallax;
+			window.onresize = windowResize;
+		</script>
+	</body>
+</html>
